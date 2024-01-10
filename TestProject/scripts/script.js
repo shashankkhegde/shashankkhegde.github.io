@@ -1,13 +1,12 @@
 
 const myImage = document.querySelector("img");
+var index=0;
 
 myImage.onclick = () => {
   const mySrc = myImage.getAttribute("src");
-  if (mySrc === "images/my-image.jpg") {
-    myImage.setAttribute("src", "images/my-image2.jpeg");
-  } else {
-    myImage.setAttribute("src", "images/my-image.jpg");
-  }
+  var imageNames = ["nature1.jpg", "nature2.jpeg", "nature3.jpg", "nature4.webp"];
+  index++;
+  myImage.setAttribute("src", "images/" + imageNames[index%imageNames.length]);
 };
 
 let myButton = document.querySelector("button");
@@ -19,7 +18,7 @@ function setUserName() {
     setUserName();
   } else {
     localStorage.setItem('name', myName);
-    myHeading.textContent = `Mozilla is cool, ` + myName;
+    myHeading.textContent = `Welcome to tranquility, ` + myName;
   }
 }
 
@@ -27,7 +26,7 @@ if(!localStorage.getItem('name')) {
   setUserName();
 } else {
   let storedName = localStorage.getItem('name');
-  myHeading.innerHTML = 'Mozilla is cool, ' + storedName;
+  myHeading.innerHTML = 'Welcome to tranquility, ' + storedName;
 }
 
 myButton.onclick = () => {
